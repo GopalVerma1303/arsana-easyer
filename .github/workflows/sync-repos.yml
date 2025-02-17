@@ -25,7 +25,7 @@ jobs:
         run: |
           echo "Syncing changes to ArsanaLabsBot..."
           # Add the bot repository as a remote
-          git remote add bot https://${TOKEN}@github.com/ArsanaLabsBot/arsanalabs.git
+          git remote add bot https://${TOKEN}@github.com/ArsanaLabsBot/arsana-easyer.git
           
           # Fetch all branches from bot repository
           git fetch bot
