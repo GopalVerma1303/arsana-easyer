@@ -1,32 +1,36 @@
-name: Sync to Arsana Bot
+name: Sync to ArsanaLabsBot Fork
 on:
   push:
     branches:
-      - main  # or your default branch name
+      - main
   pull_request:
     types: [closed]
     branches:
       - main
 
 jobs:
-  sync:
+  sync-to-bot:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout source repository
+      - name: Checkout ArsanaLabs
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+          token: ${{ secrets.SYNC_TOKEN }}
 
-      - name: Configure Git
-        run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-
-      - name: Push to Arsana Bot repository
+      - name: Push to ArsanaLabsBot
         env:
-          TARGET_TOKEN: ${{ secrets.SYNC_TOKEN }}
+          TOKEN: ${{ secrets.SYNC_TOKEN }}
         run: |
-          echo "Starting sync to Arsana Bot repository..."
-          git remote add bot https://${{ secrets.SYNC_TOKEN }}@github.com/your-username/arsana-bot.git
+          echo "Syncing changes to ArsanaLabsBot..."
+          # Add the bot repository as a remote
+          git remote add bot https://${TOKEN}@github.com/ArsanaLabsBot/arsanalabs.git
+          
+          # Fetch all branches from bot repository
+          git fetch bot
+          
+          # Push changes to the bot repository
           git push bot main:main --force
+          
+          echo "Sync completed successfully"
