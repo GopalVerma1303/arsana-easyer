@@ -21,7 +21,7 @@ export default function Home() {
           href="/contact"
           className="px-6 py-3 text-blue-600 border border-blue-600 rounded-lg shadow hover:bg-blue-100"
         >
-          Contact Us
+          Contact Us by clicking here
         </a>
       </div>
     </div>
