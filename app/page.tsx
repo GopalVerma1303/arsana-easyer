@@ -7,7 +7,7 @@ export default function Home() {
       </h2>
       
       <p className="text-lg text-gray-600 max-w-xl mb-4">
-        Our mission is to drive innovation through technology.
+        Our mission is to drive innovation through technology. Help us by contributing!
       </p>
       
       <div className="flex gap-4 mt-4">
