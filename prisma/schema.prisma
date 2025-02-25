@@ -9,12 +9,14 @@ datasource db {
 
 model User {
   id        String   @id @default(cuid())
-  name      String
+  clerkId   String   @unique // Clerk's user ID
   email     String   @unique
+  name      String?
   image     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  projects  Project[]
+
+  projects Project[] // Add relation to Project
 }
 
 model Project {
@@ -26,4 +28,3 @@ model Project {
   userId      String
   user        User     @relation(fields: [userId], references: [id])
 }
-
