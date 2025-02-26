@@ -8,15 +8,15 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(cuid())
-  clerkId   String   @unique // Clerk's user ID
-  email     String   @unique
-  name      String?
+  id        String    @id @default(cuid())
+  clerkId   String    @unique // Clerk's user ID
+  email     String    @unique
+  name      String
   image     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  projects Project[] // Add relation to Project
+  projects  Project[]
+  diagrams  Diagram[] // Add this line to relate User to Diagram
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Project {
@@ -26,5 +26,19 @@ model Project {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   userId      String
-  user        User     @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+// New Diagram model
+model Diagram {
+  id        String   @id @default(cuid())
+  name      String
+  content   Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
