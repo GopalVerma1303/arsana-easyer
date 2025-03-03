@@ -1,5 +1,6 @@
-export const dynamic = 'force-dynamic';
 "use client"
+export const dynamic = 'force-dynamic';
+
 
 import { useState } from "react"
 import { Menu, X, Save, Download, Upload, Settings, ZoomIn, ZoomOut } from "lucide-react"
