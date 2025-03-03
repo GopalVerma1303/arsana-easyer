@@ -20,7 +20,7 @@ const getPool = () => {
 
 export const sql = neon(process.env.DATABASE_URL!)
 
-export const query = async (text: string, params?: any[]) => {
+export const query = async (text: string, params?: (string | number | boolean | null | Date)[] | undefined) => {
   const pool = getPool()
   const start = Date.now()
   const res = await pool.query(text, params)

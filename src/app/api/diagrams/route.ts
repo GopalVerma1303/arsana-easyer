@@ -2,14 +2,14 @@ import { NextResponse } from "next/server"
 import { prisma } from "../../../lib/prisma"
 import { auth } from "@clerk/nextjs/server"
 
-export async function POST(req: Request) {
+export async function POST(_req: Request) {
   try {
     const { userId } = await auth()
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 })
     }
 
-    const body = await req.json()
+    const body = await _req.json()
     const { name, content } = body
 
     const diagram = await prisma.diagram.create({
@@ -27,9 +27,9 @@ export async function POST(req: Request) {
   }
 }
 
-export async function GET(req: Request) {
+export async function GET() {
   try {
-    const { userId } = auth()
+    const { userId } = await auth()  // Added 'await' here
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 })
     }
@@ -49,4 +49,3 @@ export async function GET(req: Request) {
     return new NextResponse("Internal Error", { status: 500 })
   }
 }
-

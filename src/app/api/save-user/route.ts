@@ -6,6 +6,7 @@ export async function POST() {
     await saveUserToDB();
     return NextResponse.json({ message: "User saved successfully" });
   } catch (error) {
+    console.error("Error saving user:", error); // Logs the error
     return NextResponse.json({ error: "Failed to save user" }, { status: 500 });
   }
 }

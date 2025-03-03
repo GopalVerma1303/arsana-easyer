@@ -70,7 +70,7 @@ export default function Editor() {
         <div className="h-12 bg-gray-800 border-b border-gray-700 flex items-center px-4 justify-between">
           <div className="flex items-center space-x-4">
             <select className="bg-gray-700 rounded px-2 py-1 text-sm">
-              <option>Crow's Foot</option>
+              <option>Crow&apos;s Foot</option>
               <option>Chen</option>
               <option>UML</option>
             </select>

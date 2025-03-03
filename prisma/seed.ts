@@ -1,6 +1,4 @@
-import { PrismaClient } from "@prisma/client"
-
-const prisma = new PrismaClient()
+import prisma from "@/src/lib/prisma"
 
 async function main() {
   const user1 = await prisma.user.upsert({
@@ -9,6 +7,7 @@ async function main() {
     create: {
       email: "alice@example.com",
       name: "Alice",
+      clerkId: "user_alice123", // Add a unique Clerk ID
       projects: {
         create: [
           {
@@ -30,6 +29,7 @@ async function main() {
     create: {
       email: "bob@example.com",
       name: "Bob",
+      clerkId: "user_bob456", // Add a unique Clerk ID
       projects: {
         create: [
           {
@@ -43,13 +43,3 @@ async function main() {
 
   console.log({ user1, user2 })
 }
-
-main()
-  .catch((e) => {
-    console.error(e)
-    process.exit(1)
-  })
-  .finally(async () => {
-    await prisma.$disconnect()
-  })
-
