@@ -1,12 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  output: 'export',
   env: {
     DATABASE_URL: process.env.DATABASE_URL,
   },
-}
-
-module.exports = {
   async redirects() {
     return [
       {
@@ -16,4 +14,6 @@ module.exports = {
       },
     ];
   },
-};
+}
+
+module.exports = nextConfig;
