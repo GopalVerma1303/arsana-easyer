@@ -3,7 +3,7 @@ import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  output: "standalone",
+  output: "export",
   // output: 'export',
   env: {
     DATABASE_URL: process.env.DATABASE_URL,
