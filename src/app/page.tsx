@@ -2,7 +2,7 @@ import { ArrowRight, Code, GitBranch, Database, Workflow } from "lucide-react"
 import Link from "next/link"
 import { prisma } from "../lib/prisma"
 import ClientHeader from "../components/ClientHeader"
-
+export const runtime = 'edge';
 interface User {
   name: string
   id: string

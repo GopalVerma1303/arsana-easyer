@@ -1,6 +1,7 @@
 import { auth } from "@clerk/nextjs/server"
 import { prisma } from "../../lib/prisma"
 import Link from "next/link"
+export const runtime = 'edge';
 
 // Define Project type
 interface Project {

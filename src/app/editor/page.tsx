@@ -1,4 +1,5 @@
 "use client"
+export const runtime = 'edge';
 
 import { useState } from "react"
 import { Menu, X, Save, Download, Upload, Settings, ZoomIn, ZoomOut } from "lucide-react"
