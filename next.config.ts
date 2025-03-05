@@ -11,6 +11,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+}
 //   async redirects() {
 //     return [
 //       {
@@ -25,8 +26,5 @@ const nextConfig = {
 // if (process.env.NODE_ENV === 'development') {
 //   await setupDevPlatform();
 // }
-env: {
-  DATABASE_URL: process.env.DATABASE_URL,
-},
 
-module.exports = nextConfig
+module.exports = nextConfig;
