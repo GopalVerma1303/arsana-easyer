@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { saveUserToDB } from "../../../lib/auth"; // Ensure correct path
-
+export const runtime = "edge";
 export async function POST() {
   try {
     await saveUserToDB();
